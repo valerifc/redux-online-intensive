@@ -9,7 +9,7 @@ import FlipMove from 'react-flip-move';
 
 // Instruments
 import Styles from './styles.m.css';
-import { mockedProfile } from '../../instruments/mockedData';
+//import { mockedProfile } from '../../instruments/mockedData';
 
 // Components
 import { Composer, Catcher, Post } from '../../components';
@@ -19,7 +19,8 @@ import { postActions } from '../../bus/posts/actions';
 
 const mapStateToProps = (state) => {
     return {
-        posts: state.posts,
+        posts:   state.posts,
+        profile: state.profile,
     };
 };
 
@@ -43,7 +44,7 @@ export default class Posts extends Component {
     static defaultProps = {
         // State
         //posts:   List(),
-        profile: mockedProfile,
+        //profile: mockedProfile,
 
         // Actions
         // actions: {
