@@ -15,7 +15,7 @@ import Styles from './styles.m.css';
 import { Composer, Catcher, Post } from '../../components';
 
 // Actions
-import { postActions } from '../../bus/posts/actions';
+import { postsActions } from '../../bus/posts/actions';
 
 const mapStateToProps = (state) => {
     return {
@@ -28,8 +28,8 @@ const mapDispatchToProps = (dispatch) => {
     return {
         actions: bindActionCreators(
             {
-                fetchPostsAsync: postActions.fetchPostsAsync,
-                createPostAsync: postActions.createPostAsync,
+                fetchPostsAsync: postsActions.fetchPostsAsync,
+                createPostAsync: postsActions.createPostAsync,
             },
             dispatch
         ),
@@ -62,8 +62,6 @@ export default class Posts extends Component {
 
     componentDidMount () {
         const { actions } = this.props;
-
-        //console.log('!!! this.props', this.props);
 
         actions.fetchPostsAsync();
     }

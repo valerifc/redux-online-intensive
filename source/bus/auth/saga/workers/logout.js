@@ -7,7 +7,7 @@ import { api } from "../../../../REST";
 import { authActions } from "../../actions";
 import { uiActions } from "../../../ui/actions";
 import { profileActions } from "../../../profile/actions";
-import { postActions } from "../../../posts/actions";
+import { postsActions } from "../../../posts/actions";
 import { book } from "../../../../navigation/book";
 
 export function* logout () {
@@ -32,7 +32,7 @@ export function* logout () {
         yield apply(localStorage, localStorage.removeItem, ['token']);
         yield apply(localStorage, localStorage.removeItem, ['remember']);
         yield put(profileActions.clearProfile());
-        yield put(postActions.clearPost());
+        yield put(postsActions.clearPost());
         yield put(uiActions.stopFetching());
         yield put(authActions.logout());
         yield put(replace(book.login));

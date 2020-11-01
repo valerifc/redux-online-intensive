@@ -3,7 +3,7 @@ import { put, apply } from "redux-saga/effects";
 
 // Instruments
 import { api } from "../../../../REST";
-import { postActions } from "../../actions";
+import { postsActions } from "../../actions";
 import { uiActions } from "../../../ui/actions";
 
 export function* fetchPost () {
@@ -17,7 +17,7 @@ export function* fetchPost () {
             throw new Error(message);
         }
 
-        yield put(postActions.fillPosts(posts));
+        yield put(postsActions.fillPosts(posts));
     } catch (error) {
         yield put(uiActions.emitError(error, 'fetchPost worker'));
     } finally {

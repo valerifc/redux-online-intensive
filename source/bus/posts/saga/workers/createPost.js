@@ -3,7 +3,7 @@ import { put, apply } from "redux-saga/effects";
 
 // Instruments
 import { api } from "../../../../REST";
-import { postActions } from "../../actions";
+import { postsActions } from "../../actions";
 import { uiActions } from "../../../ui/actions";
 
 export function* createPost ({ payload: comment }) {
@@ -17,7 +17,7 @@ export function* createPost ({ payload: comment }) {
             throw new Error(message);
         }
 
-        yield put(postActions.createPost(post));
+        yield put(postsActions.createPost(post));
     } catch (error) {
         yield put(uiActions.emitError(error, 'createPost worker'));
     } finally {

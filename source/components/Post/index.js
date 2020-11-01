@@ -8,7 +8,7 @@ import moment from 'moment';
 import Styles from './styles.m.css';
 
 // Actions
-import { postActions } from "../../bus/posts/actions";
+import { postsActions } from "../../bus/posts/actions";
 
 // Components
 import { Like } from '../../components';
@@ -22,7 +22,10 @@ const mapDispatchToProps = (dispatch) => {
     return {
         actions: bindActionCreators(
             {
-                removePostAsync: postActions.removePostAsync,
+                // removePostAsync: postsActions.removePostAsync,
+                // likePostAsync:   postsActions.likePostAsync,
+                // unlikePostAsync: postsActions.unlikePostAsync,
+                ...postsActions,
             },
             dispatch
         ),
