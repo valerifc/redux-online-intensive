@@ -10,5 +10,5 @@ import { enchancedStore, sagaMiddleware } from "./middleware/core";
 
 export const store = createStore(rootReducer, enchancedStore);
 
+// Важный нюанс: sagaMiddleware.run(rootSaga) нужно делать именно после создания store.
 sagaMiddleware.run(rootSaga);
-// ! Важный нюанс: sagaMiddleware.run(rootSaga) нужно делать именно после создания store.

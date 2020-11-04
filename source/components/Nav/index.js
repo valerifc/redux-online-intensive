@@ -7,7 +7,6 @@ import cx from 'classnames';
 // Instruments
 import Styles from './styles.m.css';
 import { book } from '../../navigation/book';
-//import { mockedProfile } from '../../instruments/mockedData';
 
 // Actions
 import { authActions } from '../../bus/auth/actions';

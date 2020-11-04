@@ -47,7 +47,6 @@ export const api = {
             return fetch(`${MAIN_URL}/feed`, {
                 method:  'GET',
                 headers: {
-                    //'x-no-auth': groupId, // хэдер-заглушка для постов без токена - захардкоженый автор поста аноним
                     Authorization: this.token,
                 },
             });
@@ -56,7 +55,6 @@ export const api = {
             return fetch(`${MAIN_URL}/feed`, {
                 method:  'POST',
                 headers: {
-                    // 'x-no-auth':    groupId,
                     Authorization:  this.token,
                     'Content-Type': 'application/json',
                 },

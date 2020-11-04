@@ -20,9 +20,11 @@ const logger = createLogger({
     },
 });
 
+/**
+ * @info history - это специальный объект для управления состоянием навигации в браузере.
+ * history работает кроссбраузерно.
+ */
 const history = createBrowserHistory();
-// history - это специальный объект для управления состоянием навигации в браузере.
-// history работает кроссбраузерно.
 const routerMiddleware = createRouterMiddleware(history);
 const sagaMiddleware = createSagaMiddleware();
 const devtools = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
@@ -36,5 +38,8 @@ if (__DEV__) {
 
 const enchancedStore = composeEnchancers(applyMiddleware(...middleware));
 
-export { enchancedStore, sagaMiddleware, history };
-// Экспорт sagaMiddleware - обязательный шаг для полной настройки Redux Saga.
+export {
+    enchancedStore,
+    sagaMiddleware,
+    history
+}; // Экспорт sagaMiddleware - обязательный шаг для полной настройки Redux Saga.

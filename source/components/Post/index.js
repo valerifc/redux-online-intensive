@@ -20,15 +20,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        actions: bindActionCreators(
-            {
-                // removePostAsync: postsActions.removePostAsync,
-                // likePostAsync:   postsActions.likePostAsync,
-                // unlikePostAsync: postsActions.unlikePostAsync,
-                ...postsActions,
-            },
-            dispatch
-        ),
+        actions: bindActionCreators({ ...postsActions }, dispatch),
     };
 };
 

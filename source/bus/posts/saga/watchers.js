@@ -27,7 +27,9 @@ export function* watcherUnlikePost () {
     yield takeEvery(types.UNLIKE_POST_ASYNC, unlikePost);
 }
 
-// Промежуточная watcher-saga, собирающая в себя остальные watcher-saga'и этого домена.
+/**
+ * @info Промежуточная watcher-saga, собирающая в себя остальные watcher-saga'и этого домена.
+ */
 export function* watchPosts () {
     yield all([
         call(watcherFetchPost),

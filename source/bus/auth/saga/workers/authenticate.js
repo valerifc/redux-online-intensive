@@ -26,8 +26,13 @@ export function* authenticate () {
             throw new Error(message);
         }
 
-        // localStorage.setItem('token', profile.token); // Можно и так.
-        // Но поскольку мы в полной мере используем эффекты Redux Saga, лучше так:
+        /**
+         * Можно и так:
+         * <code>
+         *     localStorage.setItem('token', profile.token);
+         * </code>
+         * Но поскольку мы в полной мере используем эффекты Redux Saga, лучше так:
+         */
         yield apply(localStorage, localStorage.setItem, ['token', profile.token]);
 
         yield put(profileActions.fillProfile(profile));

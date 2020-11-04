@@ -1,8 +1,11 @@
 // Core
 import React, { Component } from 'react';
+
+/**
+ * connect принимает функцию mapStateToProps первым аргументом.
+ * mapStateToProps умеет доставать объект состояния из redux.
+ */
 import { connect } from "react-redux";
-// connect принимает функцию mapStateToProps первым аргументом.
-// mapStateToProps умеет доставать объект состояния из redux.
 import { bindActionCreators } from "redux";
 import { List } from 'immutable';
 import FlipMove from 'react-flip-move';

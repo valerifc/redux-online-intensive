@@ -23,14 +23,6 @@ const mapDispatchToProps = {
 
 @connect(mapStateToProps, mapDispatchToProps)
 export default class LoginForm extends Component {
-    // static defaultProps = {
-    //     // State
-    //     isFetching: false,
-
-    //     // Actions
-    //     loginAsync: () => {},
-    // };
-
     _submitLoginForm = (credentials) => {
         this.props.loginAsync(credentials);
     };

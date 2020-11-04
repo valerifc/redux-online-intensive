@@ -38,6 +38,7 @@ export const postsActions = {
             payload: unlikedPostData,
         };
     },
+
     // Async
     fetchPostsAsync: () => {
         return {

@@ -6,9 +6,11 @@ export const types = {
     LOGOUT:       'LOGOUT',
 
     // Async
+    /**
+     * Для Redux Saga. Для регистрации нового пользователя.
+     * Данные о пользователе будут отправляться на сервер для регистрации нового пользователя.
+     */
     SIGNUP_ASYNC:       'SIGNUP_ASYNC',
-    // Для Redux Saga. Для регистрации нового пользователя.
-    // Данные о пользователе будут отправляться на сервер для регистрации нового пользователя.
     LOGIN_ASYNC:        'LOGIN_ASYNC',
     AUTHENTICATE_ASYNC: 'AUTHENTICATE_ASYNC',
     INITIALIZE_ASYNC:   'INITIALIZE_ASYNC',

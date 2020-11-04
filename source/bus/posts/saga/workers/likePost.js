@@ -21,7 +21,7 @@ export function* likePost ({ payload: postId }) {
         /** @info У redux-thunk для получения профиля из состояния приложения использовался бы второй аргумент thunk функции - getState.
          * В саге генератора такой возможности нет, но есть эффект select, предназначение которого такое же, как и у getState - получить состояние приложения.
          * select принимает селектор в качестве аргумента:
-        */
+         */
         const liker = yield select((state) => {
             return state.profile.removeAll(['avatar', 'token']); // То же самое: .remove('avatar').remove('token'); // Для лайка нужны только id поста, имя и фамилия.
         });

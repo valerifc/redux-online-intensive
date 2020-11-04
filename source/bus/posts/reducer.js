@@ -1,6 +1,5 @@
 // Core
-import { fromJS, List } from "immutable";
-// fromJS - метод конвертации обычного JS в коллекцию immutable JS.
+import { fromJS, List } from "immutable"; // fromJS - метод конвертации обычного JS в коллекцию immutable JS.
 
 // Types
 import { types } from "./types";
@@ -22,6 +21,16 @@ export const postsReducer = (state = initialState, action) => {
             return state.filter((post) => post.get('id') !== action.payload);
 
         case types.LIKE_POST:
+
+            /**
+             * updateIn([index, property], updateFunction)
+             * Первый аргумент updateIn - адрес свойства, которое нужно обновить.
+             * Первый аргумент updateIn - это массив, в котором каждый аргумент это часть адреса свойства, которое нужно найти.
+             * Мы обновляем список - индексированную коллекцию. Поэтому первым элементом для массива будет индекс лайкнутого поста.
+             * Первый элемент массива первого аргумента updateIn найдет нам индекс лайкнутого поста.
+             * Второй элемент массива первого аргумента updateIn - свойство лайкнутого поста, которое мы обновим вторым аргументом метода updateIn - функцией обновлятором.
+             * Второй аргумент updateIn - функция, обновляющая свойство, которое будет найдено первым аргументом.
+             */
             return state.updateIn(
                 [
                     state.findIndex((post) => {
@@ -30,16 +39,8 @@ export const postsReducer = (state = initialState, action) => {
                     'likes'
                 ],
                 (likes) => {
-                    return likes.unshift(action.payload.liker);
-                    // Добавляем immutable Map с лайкером в начало списка likes.
+                    return likes.unshift(action.payload.liker); // Добавляем immutable Map с лайкером в начало списка likes.
                 });
-            // updateIn([index, property], updateFunction)
-            // Первый аргумент updateIn - адрес свойства, которое нужно обновить.
-            // Первый аргумент updateIn - это массив, в котором каждый аргумент это часть адреса свойства, которое нужно найти.
-            // Мы обновляем список - индексированную коллекцию. Поэтому первым элементом для массива будет индекс лайкнутого поста.
-            // Первый элемент массива первого аргумента updateIn найдет нам индекс лайкнутого поста.
-            // Второй элемент массива первого аргумента updateIn - свойство лайкнутого поста, которое мы обновим вторым аргументом метода updateIn - функцией обновлятором.
-            // Второй аргумент updateIn - функция, обновляющая свойство, которое будет найдено первым аргументом.
 
         case types.UNLIKE_POST:
             return state.updateIn(
