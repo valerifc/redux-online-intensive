@@ -64,3 +64,23 @@ import { replace } from "react-router-redux"; - экшн заменит теку
 === immutable
 Map - см. source\bus\profile\reducer.js
 fromJS, List, updateIn, unshift - см. source\bus\posts\reducer.js
+removeAll, remove - см. source\bus\posts\saga\workers\likePost.js
+Методы remove и delete работают одинаково.
+
+
+
+=== Web Socket
+Продвинутая технология для построения коммуникации между клиентом и сервером.
+Инициализация и подключение:
+    source\init\socket.js
+    source\navigation\App.js
+Значок Оффлайн: будем менять его с помощью веб сокета, а хранить состояние - в Redux.
+Интервал через который веб сокет опрашивает сеть на наличие/отсутствие интернета можно менять.
+Если сделать интервал меньше, то веб сокет будет работать интенсивнее и будет больше нагружить процессор.
+От этого приложение будет работать медленнее.
+
+
+
+=== Annotation
+https://eslint.org/docs/rules/valid-jsdoc (enforce valid JSDoc comments (valid-jsdoc))
+https://gist.github.com/SerafimArts/f802c544d8e9d15f5eece1dfb2664929 (JavaScript Annotations example)

@@ -8,6 +8,7 @@ import { authActions } from "../../actions";
 import { uiActions } from "../../../ui/actions";
 import { profileActions } from "../../../profile/actions";
 import { postsActions } from "../../../posts/actions";
+import { usersActions } from "../../../users/actions";
 import { book } from "../../../../navigation/book";
 
 export function* logout () {
@@ -22,10 +23,12 @@ export function* logout () {
             throw new Error(message);
         }
 
-        // Если запрос выполнен успешно, сервер никакого ответа не присылает.
-        // Если произошла какая-либо ошибка и статус-код не 204, то сервер пришлет ответ с полем message с сообщением о том, что пошло не так.
-
-        // Логаут - это особенная операция, при выполнении которой нужно делать зачистки разных частей состояния приложения.
+        /**
+         * Если запрос выполнен успешно, сервер никакого ответа не присылает.
+         * Если произошла какая-либо ошибка и статус-код не 204, то сервер пришлет ответ с полем message с сообщением о том, что пошло не так.
+         *
+         * Логаут - это особенная операция, при выполнении которой нужно делать зачистки разных частей состояния приложения.
+         */
     } catch (error) {
         yield put(uiActions.emitError(error, 'logout worker'));
     } finally {
@@ -33,6 +36,7 @@ export function* logout () {
         yield apply(localStorage, localStorage.removeItem, ['remember']);
         yield put(profileActions.clearProfile());
         yield put(postsActions.clearPost());
+        yield put(usersActions.clearUsers());
         yield put(uiActions.stopFetching());
         yield put(authActions.logout());
         yield put(replace(book.login));

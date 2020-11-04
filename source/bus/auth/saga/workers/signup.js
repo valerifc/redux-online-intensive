@@ -12,13 +12,10 @@ export function* signup ({ payload: userInfo }) {
     try {
         yield put(uiActions.startFetching());
 
-        console.log('→ userInfo', userInfo);
         //yield delay(2000);
 
         const response = yield apply(api, api.auth.signup, [userInfo]);
         const { data: profile, message } = yield apply(response, response.json);
-
-        console.log('→ profile', profile);
 
         if (response.status !== 200) {
             throw new Error(message);

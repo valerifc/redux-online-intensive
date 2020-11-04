@@ -22,8 +22,6 @@ export function* unlikePost ({ payload: postId }) {
             return state.profile.id;
         });
 
-        console.log('→ likerId', likerId);
-
         yield put(postsActions.unlikePost({ likerId, postId }));
     } catch (error) {
         yield put(uiActions.emitError(error, 'unlikePost worker'));

@@ -11,12 +11,8 @@ export function* login ({ payload: credentials }) {
     try {
         yield put(uiActions.startFetching());
 
-        console.log('→ credentials', credentials);
-
         const response = yield apply(api, api.auth.login, [credentials]);
         const { data: profile, message } = yield apply(response, response.json);
-
-        console.log('→ profile', profile);
 
         if (response.status !== 200) {
             throw new Error(message);
@@ -26,8 +22,13 @@ export function* login ({ payload: credentials }) {
             yield apply(localStorage, localStorage.setItem, ['remember', true]);
         }
 
-        // localStorage.setItem('token', profile.token); // Можно и так.
-        // Но поскольку мы в полной мере используем эффекты Redux Saga, лучше так:
+        /**
+         * Можно и так:
+         * <code>
+         *     localStorage.setItem('token', profile.token);
+         * </code>
+         * Но поскольку мы в полной мере используем эффекты Redux Saga, лучше так:
+         */
         yield apply(localStorage, localStorage.setItem, ['token', profile.token]);
 
         yield put(profileActions.fillProfile(profile));

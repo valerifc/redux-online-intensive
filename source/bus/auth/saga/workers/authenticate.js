@@ -14,8 +14,6 @@ export function* authenticate () {
         const response = yield apply(api, api.auth.authenticate);
         const { data: profile, message } = yield apply(response, response.json);
 
-        console.log('→ profile', profile);
-
         if (response.status !== 200) {
 
             if (response.status === 401) {

@@ -8,6 +8,7 @@ export const reducer = (state = initialState, action) => {
         case types.TYPE:
             return state;
 
-        default: return state;
+        default:
+            return state;
     }
 };

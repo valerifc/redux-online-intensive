@@ -16,6 +16,7 @@ import { Composer, Catcher, Post } from '../../components';
 
 // Actions
 import { postsActions } from '../../bus/posts/actions';
+import { usersActions } from '../../bus/users/actions';
 
 const mapStateToProps = (state) => {
     return {
@@ -26,13 +27,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        actions: bindActionCreators(
-            {
-                fetchPostsAsync: postsActions.fetchPostsAsync,
-                createPostAsync: postsActions.createPostAsync,
-            },
-            dispatch
-        ),
+        actions: bindActionCreators({ ...postsActions, ...usersActions }, dispatch),
     };
 };
 
@@ -41,29 +36,12 @@ const mapDispatchToProps = (dispatch) => {
     mapDispatchToProps
 )
 export default class Posts extends Component {
-    static defaultProps = {
-        // State
-        //posts:   List(),
-        //profile: mockedProfile,
-
-        // Actions
-        // actions: {
-        //     // Users
-        //     fetchUsersAsync: () => {},
-
-        //     // Posts
-        //     fetchPostsAsync: () => {},
-        //     removePostAsync: () => {},
-        //     createPostAsync: () => {},
-        //     likePostAsync:   () => {},
-        //     unlikePostAsync: () => {},
-        // },
-    };
 
     componentDidMount () {
         const { actions } = this.props;
 
         actions.fetchPostsAsync();
+        actions.fetchUsersAsync();
     }
 
     render () {

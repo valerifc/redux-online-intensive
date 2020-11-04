@@ -7,8 +7,6 @@ export function customThunk (store) {
                 return action(store.dispatch, store.getState);
             }
 
-            //console.log('→ custom thunk-middleware', store.getState(), action);
-
             return next(action); // Без этой инструкции middleware проглотит экшн и не пустит его дальньше по цепочке.
         };
     };
