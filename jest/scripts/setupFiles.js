@@ -15,6 +15,22 @@ const userProfile = {
     token,
 };
 
+const users =
+[
+    {
+        id:        '5d56838a949e6060e781d82d',
+        firstName: 'Dima',
+        lastName:  'Golubenko',
+        avatar:    'https://lab.lectrum.io/redux/api/image/4luucyyhwlwd/f1Idia4mIe.jpeg',
+    },
+    {
+        id:        '5d569247949e6017ac81d82e',
+        firstName: 'John',
+        lastName:  'Doe',
+        avatar:    'https://lab.lectrum.io/redux/api/image/4luucyyhwlwd/placeholder.jpg',
+    }
+];
+
 const credentials = {
     email:    'test@email.com',
     password: '1111',
@@ -49,6 +65,7 @@ const url = 'https://www.url.com';
 
 global.__ = {
     userProfile,
+    users,
     errorMessage,
     token,
     error,
