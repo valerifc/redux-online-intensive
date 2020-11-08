@@ -15,6 +15,22 @@ const userProfile = {
     token,
 };
 
+const users =
+[
+    {
+        id:        '5d56838a949e6060e781d82d',
+        firstName: 'Walter',
+        lastName:  'White',
+        avatar:    'https://lab.lectrum.io/redux/api/image/4luucyyhwlwd/f1Idia4mIe.jpeg',
+    },
+    {
+        id:        '5d569247949e6017ac81d82e',
+        firstName: 'Elon',
+        lastName:  'Mask',
+        avatar:    'https://lab.lectrum.io/redux/api/image/4luucyyhwlwd/placeholder.jpg',
+    }
+];
+
 const credentials = {
     email:    'test@email.com',
     password: '1111',
@@ -47,8 +63,21 @@ const fetchResponseFail400 = {
 
 const url = 'https://www.url.com';
 
+const newName = {
+    firstName: 'Walter',
+    lastName:  'White',
+};
+
+const newPassword = {
+    oldPassword: '12345',
+    newPassword: '123456',
+};
+
+const newAvatar = ['avatar'];
+
 global.__ = {
     userProfile,
+    users,
     errorMessage,
     token,
     error,
@@ -59,6 +88,9 @@ global.__ = {
     fetchResponseFail400,
     credentials,
     url,
+    newName,
+    newPassword,
+    newAvatar,
 };
 global.fetch = fetch;
 global.localStorage = new LocalStorage();
