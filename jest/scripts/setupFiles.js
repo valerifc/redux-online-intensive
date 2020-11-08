@@ -42,6 +42,11 @@ const responseDataSuccess = {
     message: successMesasge,
 };
 
+const responseDataSuccessUsers = {
+    data:    users,
+    message: successMesasge,
+};
+
 const responseDataFail = {
     message: errorMessage,
 };
@@ -82,6 +87,7 @@ global.__ = {
     token,
     error,
     responseDataSuccess,
+    responseDataSuccessUsers,
     responseDataFail,
     fetchResponseSuccess,
     fetchResponseFail401,
