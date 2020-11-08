@@ -2,9 +2,10 @@
 import { all, call } from "redux-saga/effects";
 
 // Watchers
-import { watchAuth } from "../bus/auth/saga/watchers";
 import { watchPosts } from "../bus/posts/saga/watchers";
+import { watchAuth } from "../bus/auth/saga/watchers";
 import { watchUsers } from "../bus/users/saga/watchers";
+import { watchProfile } from "../bus/profile/saga/watchers";
 
 export function* rootSaga () {
 
@@ -23,5 +24,5 @@ export function* rootSaga () {
      * </code>
      * Но тогда импортов будет существенно больше, а также тело генератора rootSaga будет длиннее.
      */
-    yield all([call(watchPosts), call(watchAuth), call(watchUsers)]);
+    yield all([call(watchPosts), call(watchAuth), call(watchUsers), call(watchProfile)]);
 }
