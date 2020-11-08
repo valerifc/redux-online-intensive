@@ -1,39 +1,50 @@
 // Core
 import React, { Component } from 'react';
+
+/**
+ * connect принимает функцию mapStateToProps первым аргументом.
+ * mapStateToProps умеет доставать объект состояния из redux.
+ */
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 import { List } from 'immutable';
 import FlipMove from 'react-flip-move';
 
 // Instruments
 import Styles from './styles.m.css';
-import { mockedProfile } from '../../instruments/mockedData';
+//import { mockedProfile } from '../../instruments/mockedData';
 
 // Components
 import { Composer, Catcher, Post } from '../../components';
 
-export default class Posts extends Component {
-    static defaultProps = {
-        // State
-        posts:   List(),
-        profile: mockedProfile,
+// Actions
+import { postsActions } from '../../bus/posts/actions';
+import { usersActions } from '../../bus/users/actions';
 
-        // Actions
-        actions: {
-            // Users
-            fetchUsersAsync: () => {},
-
-            // Posts
-            fetchPostsAsync: () => {},
-            removePostAsync: () => {},
-            createPostAsync: () => {},
-            likePostAsync:   () => {},
-            unlikePostAsync: () => {},
-        },
+const mapStateToProps = (state) => {
+    return {
+        posts:   state.posts,
+        profile: state.profile,
     };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        actions: bindActionCreators({ ...postsActions, ...usersActions }, dispatch),
+    };
+};
+
+@connect(
+    mapStateToProps,
+    mapDispatchToProps
+)
+export default class Posts extends Component {
 
     componentDidMount () {
         const { actions } = this.props;
 
         actions.fetchPostsAsync();
+        actions.fetchUsersAsync();
     }
 
     render () {
