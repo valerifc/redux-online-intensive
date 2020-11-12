@@ -14,16 +14,6 @@ describe("authenticate saga:", () => {
     test("should complete a 200 status response scenario:", async () => {
         await expectSaga(authenticate)
             .put(uiActions.startFetching())
-
-            /*
-            Принимает массив со вложенными двухэлементными массивами.
-            Первый элемент вложенного массива - описание эффекта, для которого мы эмулируем ответ сервера.
-            Второй элемент вложенного массива - эмулированные данные.
-            В результате сага генератор выполнит тот сценарий, который нам сейчас нужен:
-            после вызова provide redux-saga-test-plan найдет внутри саги вызов эффекта, который мы эмулируем и
-            пробросит внутрь генератора эмулированные данные. В результате эмулированные данные в тесте окажутся
-            привязанными в идентификатору response (команда const response = yield apply(api, api.auth.authenticate);)
-            */
             .provide([[apply(api, api.auth.authenticate), __.fetchResponseSuccess]])
             .apply(localStorage, localStorage.setItem, ["token", __.token])
             .put(actions.change("forms.user.profile.firstName", __.userProfile.firstName))
